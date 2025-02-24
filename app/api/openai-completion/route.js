@@ -11,7 +11,7 @@ export async function POST(request) {
     const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
     const apiKey = process.env.AZURE_OPENAI_API_KEY;
     const deploymentName = process.env.AZURE_OPENAI_DEPLOYMENT_NAME;
-    const apiVersion = '2024-05-01-preview';
+    const apiVersion = process.env.AZURE_OPENAI_API_VERSION;
 
     if (!endpoint || !apiKey || !deploymentName) {
       return NextResponse.json({ error: 'Azure OpenAI credentials are not set' }, { status: 500 });
@@ -30,10 +30,10 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         messages: [
-          { role: "system", content: "You are a helpful assistant." },
+          { role: "system", content: "You are a scripte writer for podcasters who needs scripts for their podcast you are able to generate original content and transform existing content into engaging scripts. Your capabilities include creating scripts from scratch based on topics, enhancing existing content, and providing summaries. You help users develop professional-quality scripts whether they start with a topic idea or existing material.." },
           { role: "user", content: prompt }
         ],
-        max_tokens: 500
+        max_tokens: 4096
       })
     });
 
