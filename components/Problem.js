@@ -1,66 +1,98 @@
-const Arrow = ({ extraStyle }) => {
-  return (
-    <svg
-      className={`shrink-0 w-12 fill-neutral-content opacity-70 ${extraStyle}`}
-      viewBox="0 0 138 138"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g>
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M72.9644 5.31431C98.8774 43.8211 83.3812 88.048 54.9567 120.735C54.4696 121.298 54.5274 122.151 55.0896 122.639C55.6518 123.126 56.5051 123.068 56.9922 122.506C86.2147 88.9044 101.84 43.3918 75.2003 3.80657C74.7866 3.18904 73.9486 3.02602 73.3287 3.44222C72.7113 3.85613 72.5484 4.69426 72.9644 5.31431Z"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M56.5084 121.007C56.9835 118.685 57.6119 115.777 57.6736 115.445C59.3456 106.446 59.5323 97.67 58.4433 88.5628C58.3558 87.8236 57.6824 87.2948 56.9433 87.3824C56.2042 87.4699 55.6756 88.1435 55.7631 88.8828C56.8219 97.7138 56.6432 106.225 55.0203 114.954C54.926 115.463 53.5093 121.999 53.3221 123.342C53.2427 123.893 53.3688 124.229 53.4061 124.305C53.5887 124.719 53.8782 124.911 54.1287 125.015C54.4123 125.13 54.9267 125.205 55.5376 124.926C56.1758 124.631 57.3434 123.699 57.6571 123.487C62.3995 120.309 67.4155 116.348 72.791 113.634C77.9171 111.045 83.3769 109.588 89.255 111.269C89.9704 111.475 90.7181 111.057 90.9235 110.342C91.1288 109.626 90.7117 108.878 89.9963 108.673C83.424 106.794 77.3049 108.33 71.5763 111.223C66.2328 113.922 61.2322 117.814 56.5084 121.007Z"
-        />
-      </g>
-    </svg>
-  );
-};
-const Step = ({ emoji, text }) => {
-  return (
-    <div className="w-full md:w-48 flex flex-col gap-2 items-center justify-center">
-      <span className="text-4xl">{emoji}</span>
-      <h3 className="font-bold">{text}</h3>
-    </div>
-  );
-};
+import { Clock, XCircle, ArrowRight, Mic, FileText, Headphones, Users, DollarSign, Zap } from "lucide-react";
 
-// Problem Agitation: A crucial, yet overlooked, component for a landing page that sells.
-// It goes under your Hero section, and above your Features section.
-// Your Hero section makes a promise to the customer: "Our product will help you achieve XYZ".
-// Your Problem section explains what happens to the customer if its problem isn't solved.
-// The copy should NEVER mention your product. Instead, it should dig the emotional outcome of not fixing a problem.
-// For instance:
-// - Hero: "ShipFast helps developers launch startups fast"
-// - Problem Agitation: "Developers spend too much time adding features, get overwhelmed, and quit." (not about ShipFast at all)
-// - Features: "ShipFast has user auth, Stripe, emails all set up for you"
 const Problem = () => {
   return (
-    <section className="bg-neutral text-neutral-content">
-      <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
-        <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
-          80% of startups fail because founders never launch
-        </h2>
-        <p className="max-w-xl mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20">
-          Emails, DNS records, user authentication... There&apos;s so much going
-          on.
-        </p>
+    <section className="relative bg-gradient-to-b from-gray-900 via-indigo-950 to-gray-900 text-white overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -right-48 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 left-1/3 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-8 py-24 md:py-32 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 rounded-full border border-red-500/20 text-red-400 mb-6">
+            <XCircle className="w-4 h-4" />
+            <span className="text-sm font-medium">The Audio Content Gap</span>
+          </div>
+          
+          <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-8">
+            <span className="bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent">
+              Why Content Creators Are Losing 
+              <span className="relative inline-block mx-2">
+                Audience & Revenue
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-red-500 opacity-70" viewBox="0 0 100 12" preserveAspectRatio="none">
+                  <path d="M0,0 Q50,12 100,0" stroke="currentColor" strokeWidth="3" fill="none" />
+                </svg>
+              </span>
+              Every Day
+            </span>
+          </h2>
+          
+          <p className="max-w-2xl mx-auto text-lg text-blue-100/80 leading-relaxed">
+            The audio revolution is here, but most content creators are stuck in text-only mode, 
+            missing out on the 65% of consumers who prefer audio content.
+          </p>
+        </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
-          <Step emoji="🧑‍💻" text="8 hrs to add Stripe" />
-
-          <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
-
-          <Step emoji="😮‍💨" text="Struggle to find time" />
-
-          <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
-
-          <Step emoji="😔" text="Quit project" />
+        {/* Main Content - Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Card 1 */}
+          <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center border border-blue-500/30">
+                <Users className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Audience Loss</h3>
+            </div>
+            <p className="text-gray-300 mb-4">Content without audio options misses the 1.5 billion podcast listeners worldwide.</p>
+            <div className="flex items-center gap-2 text-red-400">
+              <XCircle className="w-5 h-5" />
+              <span className="text-sm font-medium">73% of users skip text-only content</span>
+            </div>
+          </div>
+          
+          {/* Card 2 */}
+          <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/20 flex items-center justify-center border border-indigo-500/30">
+                <Clock className="w-6 h-6 text-indigo-400" />
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">Time Drain</h3>
+            </div>
+            <p className="text-gray-300 mb-4">Creating professional audio manually takes 6-8 hours per piece of content.</p>
+            <div className="flex items-center gap-2 text-red-400">
+              <XCircle className="w-5 h-5" />
+              <span className="text-sm font-medium">92% abandon due to time constraints</span>
+            </div>
+          </div>
+          
+          {/* Card 3 */}
+          <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center border border-purple-500/30">
+                <DollarSign className="w-6 h-6 text-purple-400" />
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Revenue Impact</h3>
+            </div>
+            <p className="text-gray-300 mb-4">Content with audio options generates 3.5x more engagement and revenue.</p>
+            <div className="flex items-center gap-2 text-red-400">
+              <XCircle className="w-5 h-5" />
+              <span className="text-sm font-medium">$10K+ annual revenue missed</span>
+            </div>
+          </div>
+        </div>
+        
+        {/* Bottom CTA Section */}
+        <div className="mt-20 text-center">
+          <div className="inline-flex items-center justify-center p-1 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500">
+            <div className="bg-gray-900 rounded-full px-6 py-2 flex items-center gap-2">
+              <Zap className="w-5 h-5 text-indigo-400" />
+              <span className="text-white font-medium">The solution is simpler than you think</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
