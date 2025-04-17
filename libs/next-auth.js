@@ -4,6 +4,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import config from "@/config";
 import connectMongo from "./mongo";
 
+
 export const authOptions = {
   // Set any random key in .env.local
   secret: process.env.NEXTAUTH_SECRET,
@@ -55,6 +56,7 @@ export const authOptions = {
   },
   session: {
     strategy: "jwt",
+    
   },
   theme: {
     brandColor: config.colors.main,

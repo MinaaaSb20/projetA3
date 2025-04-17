@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import toJSON from "./plugins/toJSON";
+import mongoose from 'mongoose';
+import toJSON from './plugins/toJSON';
 
 const messageSchema = mongoose.Schema(
   {
@@ -35,10 +35,11 @@ const messageSchema = mongoose.Schema(
 
 messageSchema.plugin(toJSON);
 
-// Update timestamps on save
 messageSchema.pre('save', function(next) {
   this.updatedAt = new Date();
   next();
 });
 
-export default mongoose.models.Message || mongoose.model("Message", messageSchema);
+messageSchema.index({ conversationId: 1, createdAt: 1 });
+
+export default mongoose.models.Message || mongoose.model('Message', messageSchema); 

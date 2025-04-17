@@ -21,13 +21,13 @@ const userSchema = mongoose.Schema(
     customerId: {
       type: String,
       validate(value) {
-        return value.includes("cus_");
+        return value.includes("cus");
       },
     },
     priceId: {
       type: String,
       validate(value) {
-        return value.includes("price_");
+        return value.includes("price");
       },
     },
     hasAccess: {
@@ -53,4 +53,4 @@ const userSchema = mongoose.Schema(
 
 userSchema.plugin(toJSON);
 
-export default mongoose.models.User || mongoose.model("User", userSchema);
+export default mongoose.models.User || mongoose.model("User", userSchema); 

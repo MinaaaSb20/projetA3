@@ -6,9 +6,18 @@ const ConversationSchema = new mongoose.Schema({
     required: true 
   },
   userId: { 
-    type: String, // Keep as String to match NextAuth's ID format
+    type: String,
     required: true 
   },
+  messages: [{
+    role: String,
+    content: String,
+    timestamp: Date
+  }],
+  podcasts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Podcast'
+  }],
   createdAt: { 
     type: Date, 
     default: Date.now 
@@ -19,7 +28,6 @@ const ConversationSchema = new mongoose.Schema({
   }
 });
 
-// Add index for better query performance
 ConversationSchema.index({ userId: 1, createdAt: -1 });
 
-export default mongoose.models.Conversation || mongoose.model('Conversation', ConversationSchema);
+export default mongoose.models.Conversation || mongoose.model('Conversation', ConversationSchema); 

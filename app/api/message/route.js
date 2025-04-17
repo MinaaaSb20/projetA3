@@ -44,20 +44,29 @@ export async function POST(request) {
   
   try {
     const body = await request.json();
-    const { conversationId, role, content } = body;
+    const { conversationId, role, content, fileUrl } = body;
     
     if (!conversationId || !role || !content) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
     
-    const message = await Message.create({
+    // Create message object with optional fileUrl
+    const messageData = {
       conversationId,
       role,
       content
-    });
+    };
+
+    // Only add fileUrl if it exists
+    if (fileUrl) {
+      messageData.fileUrl = fileUrl;
+    }
+    
+    const message = await Message.create(messageData);
     
     return NextResponse.json(message, { status: 201 });
   } catch (error) {
+    console.error('Message creation error:', error);
     return NextResponse.json({ error: 'Failed to create message' }, { status: 500 });
   }
 }

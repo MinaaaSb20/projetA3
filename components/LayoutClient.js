@@ -51,9 +51,9 @@ const CrispChat = () => {
 // 3. Toaster: Show Success/Error messages anywhere from the app with toast()
 // 4. Tooltip: Show tooltips if any JSX elements has these 2 attributes: data-tooltip-id="tooltip" data-tooltip-content=""
 // 5. CrispChat: Set Crisp customer chat support (see above)
-const ClientLayout = ({ children }) => {
+export default function ClientLayout({ children }) {
   return (
-    <>
+    <div>
       <SessionProvider>
         {/* Show a progress bar at the top when navigating between pages */}
         <NextTopLoader color={config.colors.main} showSpinner={false} />
@@ -77,8 +77,6 @@ const ClientLayout = ({ children }) => {
         {/* Set Crisp customer chat support */}
         <CrispChat />
       </SessionProvider>
-    </>
+    </div>
   );
-};
-
-export default ClientLayout;
+}

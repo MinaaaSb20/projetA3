@@ -30,14 +30,12 @@ const voiceSchema = mongoose.Schema(
   }
 );
 
-// Add logging for debugging
 voiceSchema.pre('save', function(next) {
   console.log('Saving voice:', this.toObject());
   next();
 });
 
-// Clear existing model if it exists
 mongoose.models = {};
 
 const Voice = mongoose.model("Voice", voiceSchema);
-export default Voice;   
+export default Voice; 

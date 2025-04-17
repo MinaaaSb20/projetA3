@@ -39,21 +39,21 @@ const ButtonAccount = () => {
   if (status === "unauthenticated") return null;
 
   return (
-    <Popover className="relative z-10">
+    <Popover className="relative">
       {({ open }) => (
         <>
-          <Popover.Button className="btn">
+          <Popover.Button className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-purple-500/30 transition-all duration-200 text-sm font-medium">
             {session?.user?.image ? (
               <img
                 src={session?.user?.image}
                 alt={session?.user?.name || "Account"}
-                className="w-6 h-6 rounded-full shrink-0"
+                className="w-8 h-8 rounded-full shrink-0 ring-2 ring-purple-500/20"
                 referrerPolicy="no-referrer"
                 width={24}
                 height={24}
               />
             ) : (
-              <span className="w-6 h-6 bg-base-300 flex justify-center items-center rounded-full shrink-0">
+              <span className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-500 flex justify-center items-center rounded-full shrink-0 text-white">
                 {session?.user?.name?.charAt(0) ||
                   session?.user?.email?.charAt(0)}
               </span>
@@ -62,7 +62,7 @@ const ButtonAccount = () => {
             {session?.user?.name || "Account"}
 
             {isLoading ? (
-              <span className="loading loading-spinner loading-xs"></span>
+              <span className="w-5 h-5 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></span>
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,18 +88,18 @@ const ButtonAccount = () => {
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
           >
-            <Popover.Panel className="absolute left-0 z-10 mt-3 w-screen max-w-[16rem] transform">
-              <div className="overflow-hidden rounded-xl shadow-xl ring-1 ring-base-content ring-opacity-5 bg-base-100 p-1">
-                <div className="space-y-0.5 text-sm">
+            <Popover.Panel className="absolute right-0 mt-3 w-screen max-w-[16rem] transform">
+              <div className="overflow-hidden rounded-xl shadow-xl bg-gray-800/90 backdrop-blur-lg border border-gray-700/50 p-2">
+                <div className="space-y-1 text-sm">
                   <button
-                    className="flex items-center gap-2 hover:bg-base-300 duration-200 py-1.5 px-4 w-full rounded-lg font-medium"
+                    className="flex items-center gap-2 w-full p-3 rounded-lg font-medium text-gray-300 hover:text-white hover:bg-purple-500/10 transition-all duration-200"
                     onClick={handleBilling}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      className="w-5 h-5"
+                      className="w-5 h-5 text-purple-400"
                     >
                       <path
                         fillRule="evenodd"
@@ -110,14 +110,14 @@ const ButtonAccount = () => {
                     Billing
                   </button>
                   <button
-                    className="flex items-center gap-2 hover:bg-error/20 hover:text-error duration-200 py-1.5 px-4 w-full rounded-lg font-medium"
+                    className="flex items-center gap-2 w-full p-3 rounded-lg font-medium text-gray-300 hover:text-red-400 hover:bg-red-500/10 transition-all duration-200"
                     onClick={handleSignOut}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      className="w-5 h-5"
+                      className="w-5 h-5 text-red-400"
                     >
                       <path
                         fillRule="evenodd"
@@ -132,6 +132,13 @@ const ButtonAccount = () => {
                     </svg>
                     Logout
                   </button>
+                  <div className="h-px bg-gradient-to-r from-transparent via-gray-600/50 to-transparent my-1"></div>
+                  <div className="px-3 py-2">
+                    <div className="text-xs text-gray-400">Signed in as</div>
+                    <div className="text-sm text-gray-200 font-medium truncate">
+                      {session?.user?.email}
+                    </div>
+                  </div>
                 </div>
               </div>
             </Popover.Panel>

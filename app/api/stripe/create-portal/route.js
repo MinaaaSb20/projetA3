@@ -4,6 +4,7 @@ import { authOptions } from "@/libs/next-auth";
 import connectMongo from "@/libs/mongoose";
 import { createCustomerPortal } from "@/libs/stripe";
 import User from "@/models/User";
+import stripe from "@/libs/stripe";
 
 export async function POST(req) {
   const session = await getServerSession(authOptions);

@@ -9,6 +9,19 @@ const nextConfig = {
       "logos-world.net",
     ],
   },
+  async headers() {
+    return [
+      {
+        source: '/exports/:path*',
+        headers: [
+          {
+            key: 'Content-Disposition',
+            value: 'attachment',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
